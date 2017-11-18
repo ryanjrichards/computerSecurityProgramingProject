@@ -2,11 +2,7 @@ package computersecurityprogramingproject;
 
 /**
  *
-<<<<<<< HEAD
- * @author Ryan Richards, Chris Ashmore...
-=======
- * @author Ryan Richards, Chris Ashmore.
->>>>>>> e9e1e5c3fce631985d444a0ce756ca117b615d5f
+ * @author Ryan Richards, Chris Ashmore
  */
 public class AuthenticationMechanism_Part1 {
 
