@@ -7,15 +7,8 @@ package computersecurityprogramingproject;
 
 /**
  *
- * @author Ryan Richards, Chris Ashmore
+ * @author Ryan X1 Yoga
  */
-public class ComputerSecurityProgramingProject {
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
-    }
+public class ComputerSecurityProgramingProjectPasswordStrength {
     
 }
