@@ -9,6 +9,6 @@ package computersecurityprogramingproject;
  *
  * @author Ryan X1 Yoga
  */
-public class ComputerSecurityProgramingProjectPasswordCracker {
+public class PasswordStrength_Part3 {
     
 }
