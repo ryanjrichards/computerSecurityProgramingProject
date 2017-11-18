@@ -1,0 +1,10 @@
+diff a/computerSecurityProgramingProject/src/computersecurityprogramingproject/ComputerSecurityProgramingProject.java b/computerSecurityProgramingProject/src/computersecurityprogramingproject/ComputerSecurityProgramingProject.java	(rejected hunks)
+@@ -15,7 +15,7 @@
+      * @param args the command line arguments
+      */
+     public static void main(String[] args) {
+-        // TODO code application logic here
++        //  logic here
+     }
+     
+ }
