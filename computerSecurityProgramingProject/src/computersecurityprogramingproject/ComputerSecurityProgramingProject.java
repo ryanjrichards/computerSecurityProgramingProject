@@ -7,7 +7,7 @@ package computersecurityprogramingproject;
 
 /**
  *
- * @author Ryan X1 Yoga
+ * @author Ryan Ricards, Chris Ashmore
  */
 public class ComputerSecurityProgramingProject {
 
@@ -15,13 +15,7 @@ public class ComputerSecurityProgramingProject {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-<<<<<<< HEAD
         // TODO code application logic here
-    	//poop
-        
-=======
-        //  logic here
->>>>>>> 01d1fe305182e936dce6bad2bf4aeba545e85fde
     }
     
 }
