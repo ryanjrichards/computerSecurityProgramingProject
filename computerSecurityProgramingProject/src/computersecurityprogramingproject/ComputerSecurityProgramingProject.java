@@ -7,7 +7,7 @@ package computersecurityprogramingproject;
 
 /**
  *
- * @author Ryan Ricards, Chris Ashmore
+ * @author Ryan Richards, Chris Ashmore
  */
 public class ComputerSecurityProgramingProject {
 
