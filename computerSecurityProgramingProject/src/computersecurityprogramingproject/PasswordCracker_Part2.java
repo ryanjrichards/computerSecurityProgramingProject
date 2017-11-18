@@ -5,7 +5,7 @@ package computersecurityprogramingproject;
  * @author Ryan Richards, Chris Ashmore
  */
 public class PasswordCracker_Part2 {
-    
+
     /**
      * @param args the command line arguments
      */

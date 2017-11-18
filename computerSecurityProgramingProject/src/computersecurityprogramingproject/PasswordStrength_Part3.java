@@ -5,7 +5,7 @@ package computersecurityprogramingproject;
  * @author Ryan Richards, Chris Ashmore
  */
 public class PasswordStrength_Part3 {
-    
+
     /**
      * @param args the command line arguments
      */
