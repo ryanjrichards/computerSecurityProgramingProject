@@ -2,7 +2,7 @@ package computersecurityprogramingproject;
 
 /**
  *
- * @author Ryan Richards, Chris Ashmore
+ * @author Ryan Richards, Chris Ashmore***
  */
 public class AuthenticationMechanism_Part1 {
 
