@@ -7,7 +7,7 @@ package computersecurityprogramingproject;
 
 /**
  *
- * @author Ryan X1 Yoga
+ * @author Ryan Richards, Chris Ashmore
  */
 public class PasswordCracker_Part2 {
     
