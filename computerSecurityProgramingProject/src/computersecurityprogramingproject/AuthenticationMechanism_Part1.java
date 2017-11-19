@@ -15,7 +15,7 @@ public class AuthenticationMechanism_Part1
     public static void main(String[] args) 
     {
         //PART 1, Register and add new user
-        //Get username and password, referenced https://stackoverflow.com/questions/11871520/how-can-i-read-input-from-the-console-using-the-scanner-class-in-java for refreshed on how to use scanner
+        //Get username and password, referenced https://stackoverflow.com/questions/11871520/how-can-i-read-input-from-the-console-using-the-scanner-class-in-java for refresher on how to use scanner
         System.out.println("Enter your username: ");
         Scanner scanner = new Scanner(System.in);
         String username = scanner.nextLine();
@@ -25,10 +25,45 @@ public class AuthenticationMechanism_Part1
         //Put in userData array
         String[] userData = {username,password};
         
-        //Write to file
         //FileWriter writer = 
-                
+        
+        //Create file if not exists
+        
+        //If file exists, append file
+        
+        //Run MD5 on password
+        
+        //Write username and encyrpted password to file
+          
+        
         //PART 2, Ask for username and password and verify
+        //Get username and password, referenced https://stackoverflow.com/questions/11871520/how-can-i-read-input-from-the-console-using-the-scanner-class-in-java for refresher on how to use scanner
+        System.out.println("Enter your username: ");
+        Scanner scanner = new Scanner(System.in);
+        String username = scanner.nextLine();
+        System.out.println("Enter your password: ");
+        String password = scanner.nextLine();
+        
+        //Read userData file
+        
+        //Check if registered user
+            
+            //If registered user, proceed
+            
+            //If not registered user
+            //System.out.println("User is not registered");
+            //Break out from rest of check
+            
+        //If registered user, save encyrpted password on file as variable
+        
+        //Convert given password with MD5
+        
+        //Check if encrypted passwords match
+        
+            //If match success
+            //System.out.println("User succesfully logged in");
+            //If match failed
+            //System.out.println("Password is not correct");
     }
 
 }
