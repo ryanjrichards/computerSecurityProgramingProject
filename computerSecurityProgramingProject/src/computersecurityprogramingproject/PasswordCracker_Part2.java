@@ -1,5 +1,7 @@
 package computersecurityprogramingproject;
 
+import java.util.Scanner;
+
 /**
  *
  * @author Ryan Richards, Chris Ashmore
@@ -10,7 +12,39 @@ public class PasswordCracker_Part2 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        
+        //Get registered user
+        System.out.println("Enter the username: ");
+        Scanner scanner = new Scanner(System.in);
+        String username = scanner.nextLine();
+        
+        //Check if registered user
+            
+            //If registered user, proceed
+            
+            //If not registered user
+                //System.out.println("User is not registered");
+                //Break out from rest of check
+            
+        //If registered user, save encyrpted password on file as variable
+        
+        //Read dictionary.txt
+        
+        //Type 1 Password (exactly one of the words present in the dictionary)
+        //Computer MD5 of each dictionary word
+        
+        //Check if MD5 type 1 dictionary words matches the user's MD5 password
+        
+            //If match, display type 1 english word as the cracked password and stop checking
+        
+        //Type 2 Password (Dictionary word with numerical characters (0-9), and special characters (@,#,$,%,&))
+        //Create type 2 password list using dictionary.txt
+        
+          //Check if MD5 type 2 words matches the user's MD5 password
+        
+            //If match, display type 2 word as the cracked password and stop checking
+            
+        //Also must display time taken to crack the given password
     }
 }
 

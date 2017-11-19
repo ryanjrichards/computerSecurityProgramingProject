@@ -44,15 +44,15 @@ public class AuthenticationMechanism_Part1
         System.out.println("Enter your password: ");
         String password = scanner.nextLine();
         
-        //Read userData file
+        //Read userData text file
         
         //Check if registered user
             
             //If registered user, proceed
             
             //If not registered user
-            //System.out.println("User is not registered");
-            //Break out from rest of check
+                //System.out.println("User is not registered");
+                //Break out from rest of check
             
         //If registered user, save encyrpted password on file as variable
         
