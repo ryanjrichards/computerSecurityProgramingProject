@@ -1,5 +1,7 @@
 package computersecurityprogramingproject;
 
+import java.util.Scanner;
+
 /**
  *
  * @author Ryan Richards, Chris Ashmore
@@ -10,7 +12,23 @@ public class PasswordStrength_Part3 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        
+        //Get password for password strength test
+        System.out.println("Enter a password to evaluate password strength: ");
+        Scanner scanner = new Scanner(System.in);
+        String password = scanner.nextLine();
+        
+        //Read dictionary.txt file
+        
+        //Check for weak password (if matches dictionary word exactly)
+            
+            //If match, stop check and output it is a weak password
+        
+            //If no match, check for moderate password (if contains dictionary word as substring with numerical characters (0-9) or special characters (@,#,$,%,&))
+        
+                //If match, stop check and output it is a moderate password
+                
+                //If no match, output as strong password (if does not contain any dictionary word as a substring)
     }
 }
 
