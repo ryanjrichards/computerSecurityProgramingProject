@@ -1,6 +1,11 @@
 package computersecurityprogramingproject;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Scanner;
+import static computersecurityprogramingproject.JavaMD5Hash.md5;
 
 /**
  *
@@ -11,9 +16,18 @@ public class AuthenticationMechanism_Part1
 
     /**
      * @param args the command line arguments
+     * @throws java.io.IOException
      */
-    public static void main(String[] args) 
+    public static void main(String[] args) throws IOException 
     {
+        //PART 1, Register and add new user
+        registerUser();
+        
+        //PART 2, Ask for username and password and verify
+        verifyUser();
+    }
+    
+    public static void registerUser() throws IOException{
         //PART 1, Register and add new user
         //Get username and password, referenced https://stackoverflow.com/questions/11871520/how-can-i-read-input-from-the-console-using-the-scanner-class-in-java for refresher on how to use scanner
         System.out.println("Enter your username: ");
@@ -22,27 +36,58 @@ public class AuthenticationMechanism_Part1
         System.out.println("Enter your password: ");
         String password = scanner.nextLine();
         
-        //Put in userData array
-        String[] userData = {username,password};
+        //Check that username and passsword are both provided
+        if(username != null && !username.isEmpty() && password != null && !password.isEmpty()){
         
-        //FileWriter writer = 
-        
-        //Create file if not exists
-        
-        //If file exists, append file
-        
-        //Run MD5 on password
-        
-        //Write username and encyrpted password to file
-          
-        
+            //Convert to md5Password
+            String md5Password = md5(password);
+
+            //Write to new file, referenced http://www.baeldung.com/java-write-to-file for file writing
+            //Referenced https://howtodoinjava.com/core-java/io/how-to-create-a-new-file-in-java/ to check if file already exists
+            File file = new File("userData.txt");
+            //Check if file exits
+            if (file.createNewFile()){
+                //If file does not yet exist, create and write
+                String fileName = "userData.txt";
+                BufferedWriter writer = new BufferedWriter(new FileWriter(fileName));
+                writer.write(username);
+                writer.write(",");
+                writer.write(md5Password);
+
+                writer.close();
+            }else{
+                //If file does exist, append
+                String fileName = "userData.txt";
+                BufferedWriter writer = new BufferedWriter(new FileWriter(fileName, true));
+                writer.append(';');
+                writer.append(username);
+                writer.append(",");
+                writer.append(md5Password);
+
+                writer.close();
+            }          
+        }
+        else{
+            if(username == null || username.isEmpty() && password == null || password.isEmpty()){
+                System.out.println("Username and password were both empty. Please try again ");
+            }
+            else if(username == null || username.isEmpty()){
+                System.out.println("Username was empty. Please try again ");
+            }
+            else if(password == null || password.isEmpty()){
+                System.out.println("Password was empty. Please try again ");
+            }
+        }
+    }
+    
+    public static void verifyUser(){
         //PART 2, Ask for username and password and verify
         //Get username and password, referenced https://stackoverflow.com/questions/11871520/how-can-i-read-input-from-the-console-using-the-scanner-class-in-java for refresher on how to use scanner
-        System.out.println("Enter your username: ");
-        Scanner scanner = new Scanner(System.in);
-        String username = scanner.nextLine();
-        System.out.println("Enter your password: ");
-        String password = scanner.nextLine();
+        //System.out.println("Enter your username: ");
+        //Scanner scanner = new Scanner(System.in);
+        //String username = scanner.nextLine();
+        //System.out.println("Enter your password: ");
+        //String password = scanner.nextLine();
         
         //Read userData text file
         
@@ -65,7 +110,6 @@ public class AuthenticationMechanism_Part1
             //If match failed
             //System.out.println("Password is not correct");
     }
-
 }
 
 /*
