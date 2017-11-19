@@ -1,16 +1,34 @@
 package computersecurityprogramingproject;
 
+import java.util.Scanner;
+
 /**
  *
  * @author Ryan Richards, Chris Ashmore
  */
-public class AuthenticationMechanism_Part1 {
+public class AuthenticationMechanism_Part1 
+{
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
-        // TODO code application logic here
+    public static void main(String[] args) 
+    {
+        //PART 1, Register and add new user
+        //Get username and password, referenced https://stackoverflow.com/questions/11871520/how-can-i-read-input-from-the-console-using-the-scanner-class-in-java for refreshed on how to use scanner
+        System.out.println("Enter your username: ");
+        Scanner scanner = new Scanner(System.in);
+        String username = scanner.nextLine();
+        System.out.println("Enter your password: ");
+        String password = scanner.nextLine();
+        
+        //Put in userData array
+        String[] userData = {username,password};
+        
+        //Write to file
+        //FileWriter writer = 
+                
+        //PART 2, Ask for username and password and verify
     }
 
 }
