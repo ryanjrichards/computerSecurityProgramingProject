@@ -110,6 +110,7 @@ public class AuthenticationMechanism_Part1 {
                 //Check if registered user
                 if (username.equals(importUsername)) {
                     //Check if password matches
+                    status = "userNameSuccess";
                     if (md5Password.equals(importPassword)) {
                         status = "Successful";
                         System.out.println("Login successful");
@@ -122,6 +123,9 @@ public class AuthenticationMechanism_Part1 {
             //If there was no match, output login failed
             if(status.equals(null)){
                 System.out.println("Login failed");
+            }
+            else if(status.equals("userNameSuccess")){
+                System.out.println("Username exists but password was incorrect");
             }
                 
         }
