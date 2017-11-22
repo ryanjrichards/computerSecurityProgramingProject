@@ -48,12 +48,10 @@ public class PasswordCracker_Part2 {
                         dictionaryPassword = dictionaryPassword.replace("\n", "").replace("\r", "");
                         //Run encyrption
                         String dictionaryMD5Password = md5(dictionaryPassword);
-                        //Check if password matches    
-                        System.out.println(dictionaryPassword);
-                        
+                        //Check if password matches, Type 1 Passwrod
                         if (dictionaryMD5Password.equals(importPassword)) {
                             status = "Password successfully cracked";
-                            System.out.println("Password succesfully cracked");
+                            System.out.println("Password succesfully cracked. Type 1 Password");
                             System.out.println("User: " + importUsername + ", Password: " + dictionaryPassword);
                             break;
                         }
@@ -75,10 +73,6 @@ public class PasswordCracker_Part2 {
 
         //STILL TO DO
         
-        //Type 1 Password (exactly one of the words present in the dictionary)
-        //Computer MD5 of each dictionary word
-        //Check if MD5 type 1 dictionary words matches the user's MD5 password
-        //If match, display type 1 english word as the cracked password and stop checking
         //Type 2 Password (Dictionary word with numerical characters (0-9), and special characters (@,#,$,%,&))
         //Create type 2 password list using dictionary.txt
         //Check if MD5 type 2 words matches the user's MD5 password
