@@ -1,5 +1,8 @@
 package computersecurityprogramingproject;
 
+import static computersecurityprogramingproject.JavaMD5Hash.md5;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 /**
@@ -11,39 +14,75 @@ public class PasswordCracker_Part2 {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
-        
-        //Get registered user
+    public static void main(String[] args) throws FileNotFoundException {
+
+        //Get registered username
         System.out.println("Enter the username: ");
         Scanner scanner = new Scanner(System.in);
         String username = scanner.nextLine();
-        
-        //Check if registered user
+
+        if (username != null && !username.isEmpty()) {
+            //Check if registered user
+            //Read userData text file, referenced https://stackoverflow.com/questions/14242984/using-delimiter-when-reading-a-file for how to read file
+            Scanner readUserData = new Scanner(new File("userData.txt"));
+            readUserData.useDelimiter(",");
+
+            //Declare variables
+            String importUsername, importPassword;
+            String status = null;
+            while (readUserData.hasNext()) {
+                //Read variables from userData text file
+                importUsername = readUserData.next();
+                importPassword = readUserData.next();
+                //Check if registered user
+                if (username.equals(importUsername)) {
+                    status = "userNameSuccess";
+                    System.out.println(importPassword);
+                    //Read dictionary file
+                    Scanner readDictionary = new Scanner(new File("dictionary.txt"));
+                    readDictionary.useDelimiter("\r\n");
+                    while (readDictionary.hasNext()) {
+                        //Import content
+                        String dictionaryPassword = readDictionary.next();
+                        //Strip line terminator, referenced https://stackoverflow.com/questions/593671/remove-end-of-line-characters-from-java-string to learn how to remove line terminator
+                        dictionaryPassword = dictionaryPassword.replace("\n", "").replace("\r", "");
+                        //Run encyrption
+                        String dictionaryMD5Password = md5(dictionaryPassword);
+                        //Check if password matches    
+                        System.out.println(dictionaryPassword);
+                        
+                        if (dictionaryMD5Password.equals(importPassword)) {
+                            status = "Password successfully cracked";
+                            System.out.println("Password succesfully cracked");
+                            System.out.println("User: " + importUsername + ", Password: " + dictionaryPassword);
+                            break;
+                        }
+                    }
+                    readDictionary.close();
+                }
+
+            }
+            readUserData.close();
             
-            //If registered user, proceed
-            
-            //If not registered user
-                //System.out.println("User is not registered");
-                //Break out from rest of check
-            
-        //If registered user, save encyrpted password on file as variable
-        
-        //Read dictionary.txt
+            //If there was no match, output login failed
+            if(status.equals(null)){
+                System.out.println("Password crack failed");
+            }
+            else if(status.equals("userNameSuccess")){
+                System.out.println("Username exists but password crack failed");
+            }
+        }
+
+        //STILL TO DO
         
         //Type 1 Password (exactly one of the words present in the dictionary)
         //Computer MD5 of each dictionary word
-        
         //Check if MD5 type 1 dictionary words matches the user's MD5 password
-        
-            //If match, display type 1 english word as the cracked password and stop checking
-        
+        //If match, display type 1 english word as the cracked password and stop checking
         //Type 2 Password (Dictionary word with numerical characters (0-9), and special characters (@,#,$,%,&))
         //Create type 2 password list using dictionary.txt
-        
-          //Check if MD5 type 2 words matches the user's MD5 password
-        
-            //If match, display type 2 word as the cracked password and stop checking
-            
+        //Check if MD5 type 2 words matches the user's MD5 password
+        //If match, display type 2 word as the cracked password and stop checking
         //Also must display time taken to crack the given password
     }
 }
@@ -91,4 +130,4 @@ In addition to the above mentioned components, you are encouraged (but not requi
 additional optimizations in the password cracking logic to minimize the password cracking time. Any
 optimizations you introduce needs to be clearly documented in your report. Depending on the
 effectiveness and complexity of the optimization, you may receive some extra credit for it.
-*/
+ */

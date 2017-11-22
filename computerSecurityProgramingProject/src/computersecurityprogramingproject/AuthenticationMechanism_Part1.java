@@ -99,7 +99,7 @@ public class AuthenticationMechanism_Part1 {
             Scanner read = new Scanner(new File("userData.txt"));
             read.useDelimiter(",");
 
-            //Declare variable
+            //Declare variables
             String importUsername, importPassword;
             String status = null;
 
