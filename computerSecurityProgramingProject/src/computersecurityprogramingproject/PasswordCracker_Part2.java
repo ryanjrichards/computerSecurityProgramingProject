@@ -44,7 +44,7 @@ public class PasswordCracker_Part2 {
                     while (readDictionary.hasNext()) {
                         //Import content
                         String dictionaryPassword = readDictionary.next();
-                        //Strip line terminator, referenced https://stackoverflow.com/questions/593671/remove-end-of-line-characters-from-java-string to learn how to remove line terminator
+                        //Strip line terminator, referenced https://stackoverflow.com/questions/2163045/how-to-remove-line-breaks-from-a-file-in-java/2163204 to learn how to remove line terminator
                         dictionaryPassword = dictionaryPassword.replace("\n", "").replace("\r", "");
                         //Run encyrption
                         String dictionaryMD5Password = md5(dictionaryPassword);
