@@ -63,7 +63,7 @@ public class PasswordCracker_Part2 {
             readUserData.close();
             
             //If there was no match, output login failed
-            if(status.equals(null)){
+            if(status == null){
                 System.out.println("Password crack failed");
             }
             else if(status.equals("userNameSuccess")){

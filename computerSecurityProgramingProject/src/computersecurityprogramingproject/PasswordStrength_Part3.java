@@ -1,5 +1,8 @@
 package computersecurityprogramingproject;
 
+import static computersecurityprogramingproject.JavaMD5Hash.md5;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 /**
@@ -11,24 +14,56 @@ public class PasswordStrength_Part3 {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
-        
+    public static void main(String[] args) throws FileNotFoundException {
+
         //Get password for password strength test
         System.out.println("Enter a password to evaluate password strength: ");
         Scanner scanner = new Scanner(System.in);
         String password = scanner.nextLine();
-        
-        //Read dictionary.txt file
-        
-        //Check for weak password (if matches dictionary word exactly)
-            
-            //If match, stop check and output it is a weak password
-        
-            //If no match, check for moderate password (if contains dictionary word as substring with numerical characters (0-9) or special characters (@,#,$,%,&))
-        
-                //If match, stop check and output it is a moderate password
-                
-                //If no match, output as strong password (if does not contain any dictionary word as a substring)
+
+        //Declare variables
+        String status = null;
+
+        Scanner readDictionary = new Scanner(new File("dictionary.txt"));
+        readDictionary.useDelimiter("\r\n");
+        while (readDictionary.hasNext()) {
+            //Import content
+            String dictionaryPassword = readDictionary.next();
+            //Strip line terminator, referenced https://stackoverflow.com/questions/2163045/how-to-remove-line-breaks-from-a-file-in-java/2163204 to learn how to remove line terminator
+            dictionaryPassword = dictionaryPassword.replace("\n", "").replace("\r", "");
+            //Check for weak password
+            if (dictionaryPassword.equals(password)) {
+                status = "PasswordStrengthWeak";
+                System.out.println("Password strength is weak, matches dictionary word exactly");
+                break;
+            }
+        }
+
+        //If not weak password, check if moderate password
+        if (status == null) {
+            Scanner readDictionary2 = new Scanner(new File("dictionary.txt"));
+            readDictionary2.useDelimiter("\r\n");
+            while (readDictionary2.hasNext()) {
+                //Import content
+                String dictionaryPassword = readDictionary2.next();
+                //Strip line terminator, referenced https://stackoverflow.com/questions/2163045/how-to-remove-line-breaks-from-a-file-in-java/2163204 to learn how to remove line terminator
+                dictionaryPassword = dictionaryPassword.replace("\n", "").replace("\r", "");
+
+                //Referenced https://stackoverflow.com/questions/2275004/in-java-how-do-i-check-if-a-string-contains-a-substring-ignoring-case for how to check for substring
+                if (dictionaryPassword.toLowerCase().contains(password.toLowerCase())) {
+                    status = "PasswordStrengthModerate";
+                    System.out.println("Password strength is moderate, contains dictionary word as a substring");
+                    break;
+                }
+            }
+
+        }
+        //If not weak or moderate password, then it is a strong password
+        if (status == null) {
+            status = "PasswordStrengthStrong";
+            System.out.println("Password strength is strong, does not contain any dictionary words");
+        }
+
     }
 }
 
@@ -53,4 +88,4 @@ matches a dictionary word. In that case the password string is classified as a w
 dictionary word directly matches the string, the program should check if the dictionary word is a substring
 of the password string. In that case, the password is classified as a moderate password. If no dictionary
 word matches even a substring of the password string, then the password is a strong password.
-*/
+ */
