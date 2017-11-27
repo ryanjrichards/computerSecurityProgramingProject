@@ -63,17 +63,17 @@ public class PasswordCracker_Part2 {
                             //Generate type 2
                             //Referenced https://stackoverflow.com/questions/1005073/initialization-of-an-arraylist-in-one-line for how to create ArrayList 
                             ArrayList<String> dictionaryPasswordType2List = new ArrayList<String>();
-                            for (int i = 0; i < specialCharacters.length; i++) {
+                            for (String specialCharacter : specialCharacters) {
                                 //Create type2 combination: [word] (1 special character)
-                                dictionaryPasswordType2List.add(dictionaryPassword + specialCharacters[i]);
-                                for (int x = 0; x < specialCharacters.length; x++) {
+                                dictionaryPasswordType2List.add(dictionaryPassword + specialCharacter);
+                                for (String specialCharacter1 : specialCharacters) {
                                     //Create type2 combination: [word] (2 special characters)
-                                    dictionaryPasswordType2List.add(dictionaryPassword + specialCharacters[i] + specialCharacters[x]);
+                                    dictionaryPasswordType2List.add(dictionaryPassword + specialCharacter + specialCharacter1);
                                     //Create type2 combination: (2 special characters) [word]
-                                    dictionaryPasswordType2List.add(specialCharacters[i] + specialCharacters[x] + dictionaryPassword);
-                                    for (int k = 0; k < specialCharacters.length; k++) {
+                                    dictionaryPasswordType2List.add(specialCharacter + specialCharacter1 + dictionaryPassword);
+                                    for (String specialCharacter2 : specialCharacters) {
                                         //Create type2 combination: (1 special character) [word] (2 special characters)
-                                        dictionaryPasswordType2List.add(specialCharacters[i] + dictionaryPassword + specialCharacters[x] + specialCharacters[k]);
+                                        dictionaryPasswordType2List.add(specialCharacter + dictionaryPassword + specialCharacter1 + specialCharacter2);
                                     }
                                 }
                             }
