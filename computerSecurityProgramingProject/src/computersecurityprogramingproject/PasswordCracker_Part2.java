@@ -47,14 +47,17 @@ public class PasswordCracker_Part2 {
                         //Strip line terminator, referenced https://stackoverflow.com/questions/2163045/how-to-remove-line-breaks-from-a-file-in-java/2163204 to learn how to remove line terminator
                         dictionaryPassword = dictionaryPassword.replace("\n", "").replace("\r", "");
                         //Run encyrption
-                        String dictionaryMD5Password = md5(dictionaryPassword);
+                        String dictionaryMD5PasswordType1 = md5(dictionaryPassword);
                         //Check if password matches, Type 1 Passwrod
-                        if (dictionaryMD5Password.equals(importPassword)) {
+                        if (dictionaryMD5PasswordType1.equals(importPassword)) {
                             status = "Password successfully cracked";
                             System.out.println("Password succesfully cracked. Type 1 Password");
                             System.out.println("User: " + importUsername + ", Password: " + dictionaryPassword);
                             break;
                         }
+                        
+                        
+                        
                     }
                     readDictionary.close();
                 }
@@ -71,10 +74,24 @@ public class PasswordCracker_Part2 {
             }
         }
 
+        
+        /*if (dictionaryMD5PasswordType2.equals(importPassword)){
+                status = "Password successfully cracked";
+                System.out.println("Password succesfully cracked. Type 2 Password");
+                System.out.println("User: " + importUsername + ", Password: " + modifiedDictionaryPassword);
+                break;
+            }
+        */
         //STILL TO DO
         
         //Type 2 Password (Dictionary word with numerical characters (0-9), and special characters (@,#,$,%,&))
         //Create type 2 password list using dictionary.txt
+        /*
+        (1 special character) [word] (2 special characters)
+        [word] (2 special characters)
+        (2 special characters) [word]
+        [word] (1 special character)
+        */
         //Check if MD5 type 2 words matches the user's MD5 password
         //If match, display type 2 word as the cracked password and stop checking
         //Also must display time taken to crack the given password
