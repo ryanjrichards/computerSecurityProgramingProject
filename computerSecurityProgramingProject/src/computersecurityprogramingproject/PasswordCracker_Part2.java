@@ -3,6 +3,7 @@ package computersecurityprogramingproject;
 import static computersecurityprogramingproject.JavaMD5Hash.md5;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -30,6 +31,9 @@ public class PasswordCracker_Part2 {
             //Declare variables
             String importUsername, importPassword;
             String status = null;
+            String[] specialCharacters = {"@", "#", "$", "%", "&", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
+
+            //Read through userDataFile
             while (readUserData.hasNext()) {
                 //Read variables from userData text file
                 importUsername = readUserData.next();
@@ -55,45 +59,50 @@ public class PasswordCracker_Part2 {
                             System.out.println("User: " + importUsername + ", Password: " + dictionaryPassword);
                             break;
                         }
-                        
-                        
-                        
+                        if (status.equals("userNameSuccess")) {
+                            //Generate type 2
+                            //Referenced https://stackoverflow.com/questions/1005073/initialization-of-an-arraylist-in-one-line for how to create ArrayList 
+                            ArrayList<String> dictionaryPasswordType2List = new ArrayList<String>();
+                            for (int i = 0; i < specialCharacters.length; i++) {
+                                //Create type2 combination: [word] (1 special character)
+                                dictionaryPasswordType2List.add(dictionaryPassword + specialCharacters[i]);
+                                for (int x = 0; x < specialCharacters.length; x++) {
+                                    //Create type2 combination: [word] (2 special characters)
+                                    dictionaryPasswordType2List.add(dictionaryPassword + specialCharacters[i] + specialCharacters[x]);
+                                    //Create type2 combination: (2 special characters) [word]
+                                    dictionaryPasswordType2List.add(specialCharacters[i] + specialCharacters[x] + dictionaryPassword);
+                                    for (int k = 0; k < specialCharacters.length; k++) {
+                                        //Create type2 combination: (1 special character) [word] (2 special characters)
+                                        dictionaryPasswordType2List.add(specialCharacters[i] + dictionaryPassword + specialCharacters[x] + specialCharacters[k]);
+                                    }
+                                }
+                            }
+                            for (int r = 0; r < dictionaryPasswordType2List.size(); r++) {
+                                //Run encryption
+                                String dictionaryMD5PasswordType2 = md5(dictionaryPasswordType2List.get(r));
+                                //Check if match
+                                if (dictionaryMD5PasswordType2.equals(importPassword)) {
+                                    status = "Password successfully cracked";
+                                    System.out.println("Password succesfully cracked. Type 2 Password");
+                                    System.out.println("User: " + importUsername + ", Password: " + dictionaryPasswordType2List.get(r));
+                                    break;
+                                }
+                            }
+                        }
                     }
                     readDictionary.close();
                 }
-
             }
             readUserData.close();
-            
+
             //If there was no match, output login failed
-            if(status == null){
+            if (status == null) {
                 System.out.println("Password crack failed");
-            }
-            else if(status.equals("userNameSuccess")){
+            } else if (status.equals("userNameSuccess")) {
                 System.out.println("Username exists but password crack failed");
             }
         }
-
-        
-        /*if (dictionaryMD5PasswordType2.equals(importPassword)){
-                status = "Password successfully cracked";
-                System.out.println("Password succesfully cracked. Type 2 Password");
-                System.out.println("User: " + importUsername + ", Password: " + modifiedDictionaryPassword);
-                break;
-            }
-        */
         //STILL TO DO
-        
-        //Type 2 Password (Dictionary word with numerical characters (0-9), and special characters (@,#,$,%,&))
-        //Create type 2 password list using dictionary.txt
-        /*
-        (1 special character) [word] (2 special characters)
-        [word] (2 special characters)
-        (2 special characters) [word]
-        [word] (1 special character)
-        */
-        //Check if MD5 type 2 words matches the user's MD5 password
-        //If match, display type 2 word as the cracked password and stop checking
         //Also must display time taken to crack the given password
     }
 }
