@@ -21,7 +21,10 @@ public class PasswordCracker_Part2 {
         System.out.println("Enter the username: ");
         Scanner scanner = new Scanner(System.in);
         String username = scanner.nextLine();
-
+        
+        //Start timer, referenced https://docs.oracle.com/javase/8/docs/api/java/time/Clock.html
+        long programStart =  System.currentTimeMillis();
+        
         if (username != null && !username.isEmpty()) {
             //Check if registered user
             //Read userData text file, referenced https://stackoverflow.com/questions/14242984/using-delimiter-when-reading-a-file for how to read file
@@ -56,6 +59,9 @@ public class PasswordCracker_Part2 {
                             status = "Password successfully cracked";
                             System.out.println("Password succesfully cracked. Type 1 Password");
                             System.out.println("User: " + importUsername + ", Password: " + dictionaryPassword);
+                            //Stop timer
+                            long programStop = System.currentTimeMillis();
+                            System.out.println("Program run time: " + (programStop - programStart) + " milliseconds");
                             break;
                         }
                         if (status.equals("userNameSuccess")) {
@@ -84,6 +90,9 @@ public class PasswordCracker_Part2 {
                                     status = "Password successfully cracked";
                                     System.out.println("Password succesfully cracked. Type 2 Password");
                                     System.out.println("User: " + importUsername + ", Password: " + dictionaryPasswordType2List.get(r));
+                                    //Stop timer
+                                    long programStop = System.currentTimeMillis();
+                                    System.out.println("Program run time: " + (programStop - programStart)  + " milliseconds");
                                     break;
                                 }
                             }
@@ -97,8 +106,14 @@ public class PasswordCracker_Part2 {
             //If there was no match, output login failed
             if (status == null) {
                 System.out.println("Password crack failed");
+                //Stop timer
+                long programStop = System.currentTimeMillis();
+                System.out.println("Program run time: " + (programStop - programStart) + " milliseconds");
             } else if (status.equals("userNameSuccess")) {
                 System.out.println("Username exists but password crack failed");
+                //Stop timer
+                long programStop = System.currentTimeMillis();
+                System.out.println("Program run time: " + (programStop - programStart) + " milliseconds");
             }
         }
         //STILL TO DO
