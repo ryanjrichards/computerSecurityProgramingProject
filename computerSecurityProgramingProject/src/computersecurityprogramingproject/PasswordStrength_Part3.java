@@ -50,7 +50,7 @@ public class PasswordStrength_Part3 {
                 dictionaryPassword = dictionaryPassword.replace("\n", "").replace("\r", "");
 
                 //Referenced https://stackoverflow.com/questions/2275004/in-java-how-do-i-check-if-a-string-contains-a-substring-ignoring-case for how to check for substring
-                if (dictionaryPassword.toLowerCase().contains(password.toLowerCase())) {
+                if (password.toLowerCase().contains(dictionaryPassword.toLowerCase())) {
                     status = "PasswordStrengthModerate";
                     System.out.println("Password strength is moderate, contains dictionary word as a substring");
                     break;

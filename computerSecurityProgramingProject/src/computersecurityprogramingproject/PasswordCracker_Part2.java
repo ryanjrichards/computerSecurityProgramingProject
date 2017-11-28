@@ -41,7 +41,6 @@ public class PasswordCracker_Part2 {
                 //Check if registered user
                 if (username.equals(importUsername)) {
                     status = "userNameSuccess";
-                    System.out.println(importPassword);
                     //Read dictionary file
                     Scanner readDictionary = new Scanner(new File("dictionary.txt"));
                     readDictionary.useDelimiter("\r\n");

@@ -19,20 +19,19 @@ public class AuthenticationMechanism_Part1 {
      * @throws java.io.IOException
      */
     public static void main(String[] args) throws IOException {
-        
+
         System.out.println("Enter 1 to register user, enter 2 to login: ");
         Scanner scanner = new Scanner(System.in);
         String choice = scanner.nextLine();
-        if(choice.equals("1")){
+        if (choice.equals("1")) {
             //PART 1, Register and add new user
             registerUser();
         }
-        if(choice.equals("2")){
+        if (choice.equals("2")) {
             //PART 2, Ask for username and password and verify
-            verifyUser();  
+            verifyUser();
         }
 
-        
     }
 
     public static void registerUser() throws IOException {
@@ -119,15 +118,14 @@ public class AuthenticationMechanism_Part1 {
                 }
             }
             read.close();
-            
+
             //If there was no match, output login failed
-            if(status.equals(null)){
+            if (status.equals(null)) {
                 System.out.println("Login failed");
-            }
-            else if(status.equals("userNameSuccess")){
+            } else if (status.equals("userNameSuccess")) {
                 System.out.println("Username exists but password was incorrect");
             }
-                
+
         }
     }
 }
