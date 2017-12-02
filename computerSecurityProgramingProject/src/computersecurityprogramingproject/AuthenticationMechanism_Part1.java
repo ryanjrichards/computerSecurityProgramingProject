@@ -59,7 +59,7 @@ public class AuthenticationMechanism_Part1 {
                 writer.write(username);
                 writer.write(",");
                 writer.write(md5Password);
-
+                System.out.println("User successfully registered");
                 writer.close();
             } else {
                 //If file does exist, append
@@ -68,7 +68,7 @@ public class AuthenticationMechanism_Part1 {
                 writer.append(username);
                 writer.append(",");
                 writer.append(md5Password);
-
+                System.out.println("User successfully registered");
                 writer.close();
             }
         } else {
